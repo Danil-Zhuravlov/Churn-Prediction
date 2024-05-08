@@ -1,25 +1,33 @@
 import pandas as pd
 import joblib
 from preprocessing import clean_data, get_clientnum, get_existing_customers, get_attrited_customers
-from predict import predict_probability, split_X_y, prediction_as_json
+from predict import split_X_y, predict_and_save_as_json
 
+# clean the data and loads clean data as a pandas dataframe
 clean_data()
-
-model = joblib.load('model.joblib')
-
 df = pd.read_csv('assets/cleaned_data.csv')
 
-clientnums_df = get_clientnum()
-
-df_not_attrited_customers = df[df['Attrition_Flag'] == 0]
-
-df_attrited_customers = df[df['Attrition_Flag'] == 1]
+# loads the model trained in model.py file
+model = joblib.load('model.joblib')
 
 print(f'Number of existing customers: {get_existing_customers().shape[0]}')
 print(f'Number of attrited customers: {get_attrited_customers().shape[0]}')
 
-X, y = split_X_y(get_existing_customers())
+# split the data of existing customers
+X_existing, y = split_X_y(get_existing_customers())
 
-predict_probability(X)
+# predicts the probability of being attrited and saves it as a json file
+predict_and_save_as_json(
+    X_existing, threshold=0.5,
+    file_name='At_Risk_Customers.json',
+    customer_type='existing'
+    )
 
-prediction_as_json(X)
+
+X_attrited, y = split_X_y(get_attrited_customers())
+
+predict_and_save_as_json(
+    X_attrited, threshold=0.5,
+    file_name='Reactivation_Customer.json',
+    customer_type='attrited'
+    )
