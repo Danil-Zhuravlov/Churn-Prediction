@@ -51,7 +51,7 @@ churn-prediction/
 
 ## Usage 💻
 Once set up, the project can be utilized as follows:
-- **`main.py`**: Generates JSON files with customer similarity scores.
+- **`main.py`**: Generates 2 JSON files with customer similarity to the group score.
 - **`model.py`**: Retrains the RandomForestClassifier model.
 
 ## Results 📊
@@ -62,7 +62,9 @@ Once set up, the project can be utilized as follows:
     [[1628   48]
      [  25 1699]]
     ```
-- **Client Similarity Prediction**: Provides a JSON file with similarity scores for each client.
+- **Client Similarity Prediction**: Provides a separate JSON file with similarity scores for each client based on the provided threshold:
+1) How existing customer similar to attrited.
+2) How attrited customer similar to existing.
 
 ## Future Improvements 🔮
 - Create a better data preprocessing pipeline to make it easier to configure and maintain.
