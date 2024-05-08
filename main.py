@@ -23,9 +23,10 @@ predict_and_save_as_json(
     customer_type='existing'
     )
 
-
+# split the data of attrited customers
 X_attrited, y = split_X_y(get_attrited_customers())
 
+# predicts the probability of becoming existing and saves it as a json file
 predict_and_save_as_json(
     X_attrited, threshold=0.5,
     file_name='Reactivation_Customer.json',

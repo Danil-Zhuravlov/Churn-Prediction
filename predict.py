@@ -6,12 +6,19 @@ from preprocessing import get_clientnum
 
 model = joblib.load('model.joblib')
 
-def split_X_y(dataframe):
-    X = dataframe.drop(['Attrition_Flag'], axis=1)
-    y = dataframe['Attrition_Flag']
-    return X, y
-
 def predict_and_save_as_json(X, threshold=0.5, file_name='result.json', customer_type='existing'):
+    """
+    Predicts the probability of churn for each customer in the input data and saves the results as a JSON file.
+
+    Args:
+        X (array-like): Input data containing features for each customer.
+        threshold (float, optional): Threshold value for filtering the predicted probabilities. Defaults to 0.5.
+        file_name (str, optional): Name of the JSON file to save the results. Defaults to 'result.json'.
+        customer_type (str, optional): Type of customer ('existing' or 'attrited'). Defaults to 'existing'.
+
+    Returns:
+        None
+    """
     if customer_type == 'existing':
         Attrited_Flag_value = 1
     

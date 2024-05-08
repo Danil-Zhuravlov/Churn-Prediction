@@ -5,16 +5,43 @@ import os
 
 
 def get_clientnum(file_path='assets/BankChurners.csv'):
+    """
+    Reads a CSV file and returns a DataFrame containing the 'CLIENTNUM' column.
+
+    Parameters:
+        file_path (str): The path to the CSV file. Default is 'assets/BankChurners.csv'.
+
+    Returns:
+        pandas.DataFrame: A DataFrame containing the 'CLIENTNUM' column.
+    """
     df = pd.read_csv(file_path)
     clientnums_df = df[['CLIENTNUM']]
     return clientnums_df
 
 def get_existing_customers(file_path='assets/cleaned_data.csv'):
+    """
+    Retrieves the existing customers from a given CSV file.
+
+    Parameters:
+    - file_path (str): The path to the CSV file containing the customer data. Default is 'assets/cleaned_data.csv'.
+
+    Returns:
+    - existing_customers (DataFrame): A DataFrame containing the existing customers, filtered by 'Attrition_Flag' equal to 0.
+    """
     df = pd.read_csv(file_path)
     existing_customers = df[df['Attrition_Flag'] == 0]
     return existing_customers
 
 def get_attrited_customers(file_path='assets/cleaned_data.csv'):
+    """
+    Retrieves the attrited customers from the given CSV file.
+
+    Parameters:
+    - file_path (str): The path to the CSV file containing the customer data. Default is 'assets/cleaned_data.csv'.
+
+    Returns:
+    - attrited_customers (DataFrame): A DataFrame containing the attrited customers.
+    """
     df = pd.read_csv(file_path)
     attrited_customers = df[df['Attrition_Flag'] == 1]
     return attrited_customers
@@ -22,6 +49,16 @@ def get_attrited_customers(file_path='assets/cleaned_data.csv'):
 
 
 def split_X_y(file_path='assets/cleaned_data.csv'):
+    """
+    Split the data into features (X) and target variable (y).
+
+    Parameters:
+        file_path (str): The path to the CSV file containing the data. Default is 'assets/cleaned_data.csv'.
+
+    Returns:
+        X (pandas.DataFrame): The features dataframe.
+        y (pandas.Series): The target variable series.
+    """
     dataframe = pd.read_csv(file_path)
     X = dataframe.drop(['Attrition_Flag'], axis=1)
     y = dataframe['Attrition_Flag']
@@ -30,6 +67,15 @@ def split_X_y(file_path='assets/cleaned_data.csv'):
 
 
 def clean_data(file_path='assets/BankChurners.csv'):
+    """
+    Cleans the data by performing various transformations on the DataFrame.
+
+    Parameters:
+    - file_path (str): The path to the CSV file containing the data. Default is 'assets/BankChurners.csv'.
+
+    Returns:
+    None
+    """
 
     pd.set_option('future.no_silent_downcasting', True)
 
