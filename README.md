@@ -13,7 +13,7 @@ Predicting customer churn is essential for retaining valuable clients. This proj
 - [About](#about-ℹ️) ℹ️
 
 ## Introduction 📝
-This project focuses on predicting customer churn in a bank using data from the Credit Card Customers Dataset available on Kaggle. The dataset provides information about various features of customers, allowing us to build a predictive model to identify those likely to close their accounts.
+This project focuses on predicting customer churn in a bank using data from the Credit Card Customers Dataset available on [Kaggle](https://www.kaggle.com/datasets/sakshigoyal7/credit-card-customers). The dataset provides information about various features of customers, allowing us to build a predictive model to identify those likely to close their accounts.
 
 ## Project Goals 🎯
 1. **Marketing Focus**: Identify clients more likely to close their bank accounts to prevent attrition.
@@ -35,13 +35,17 @@ pip install -r requirements.txt
 ```
 churn-prediction/
 │
-├── data/
-│ └── credit_card_customers.csv
-├── models/
-│ └── RandomForestClassifier.joblib
-├── README.md
+├── assets/
+│ └── BankChurners.csv
+│ └── cleaned_data.csv
 ├── main.py
+├── preprocessing.py
 ├── model.py
+├── model.joblib
+├── predict.py
+├── LICENSE
+├── README.md
+├── .gitignore
 └── requirements.txt
 ```
 
