@@ -21,7 +21,8 @@ def get_attrited_customers(file_path='assets/cleaned_data.csv'):
 
 
 
-def split_X_y(dataframe='assets/cleaned_data.csv'):
+def split_X_y(file_path='assets/cleaned_data.csv'):
+    dataframe = pd.read_csv(file_path)
     X = dataframe.drop(['Attrition_Flag'], axis=1)
     y = dataframe['Attrition_Flag']
     return X, y
