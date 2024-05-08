@@ -31,6 +31,8 @@ def split_X_y(file_path='assets/cleaned_data.csv'):
 
 def clean_data(file_path='assets/BankChurners.csv'):
 
+    pd.set_option('future.no_silent_downcasting', True)
+
     df = pd.read_csv(file_path)
 
     df.drop([
